@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kmsadmin/page/sparql_page.dart';
@@ -8,8 +10,21 @@ import 'package:logging/logging.dart';
 import 'page/dataservices_page.dart';
 import 'resources/api_repository.dart';
 
-void main() {
+class Environment {
+  static const requiredEnvVars = ['API_URL', 'API_TOKEN'];
+  static String get fileName =>
+      kReleaseMode ? ".env.production" : ".env.development";
+  static String get apiUrl => dotenv.env['API_URL'] ?? 'API_URL not defined';
+  static String get apiToken =>
+      dotenv.env['API_TOKEN'] ?? 'API_TOKEN not defined';
+  static bool get hasEnv => dotenv.isEveryDefined(requiredEnvVars);
+}
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Load environment variables
+  await dotenv.load(fileName: Environment.fileName);
 
   // Setup logging
   Logger.root.level = Level.ALL; // defaults to Level.INFO

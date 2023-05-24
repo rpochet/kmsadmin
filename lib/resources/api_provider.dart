@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
 import 'package:logging/logging.dart';
 
+import '../main.dart';
 import '../models/dataservices_model.dart';
 import '../models/sparql_queries_model.dart';
 
 class ApiProvider {
   static final log = Logger('ApiProvider');
   final Dio _dio = Dio();
-  static const _url = 'https://admin-dv.data.europarl.europa.eu';
-  static const _authorizationHeader =
-      'Basic a21zd29ya2Zsb3c6cFJ3V3FzOEtiZ1J0UTRkag==';
+  static final _url = Environment.apiUrl;
+  static final _authorizationHeader = Environment.apiToken;
   static const _jsonAcceptHeader = 'application.json';
   final _defaultHeader = Options(
     headers: {

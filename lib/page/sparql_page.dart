@@ -42,7 +42,7 @@ class _SparqlPageState extends State<SparqlPage> {
             if (state is SparqlError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(state.message!),
+                  content: Text(state.message),
                 ),
               );
             }
