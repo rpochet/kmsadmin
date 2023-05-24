@@ -1,0 +1,14 @@
+{
+  "title": "KMS Administration",
+  "@title": {
+    "description": "The name of the application"
+  },
+  "uri": "URI",
+  "actions": "Actions",
+  "apis": "APIs",
+  "dataservices": "Dataservices",
+  "vocabularies": "Vocabularies",
+  "workflow": "Workflow",
+  "bulkLoad": "Bulk Load",
+  "sparql": "SPARQL"
+}

@@ -1,0 +1,9 @@
+{
+  "nl": [
+    "uri",
+    "actions",
+    "apis",
+    "bulkLoad",
+    "sparql"
+  ]
+}

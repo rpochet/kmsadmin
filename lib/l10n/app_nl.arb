@@ -1,0 +1,9 @@
+{
+  "title": "KMS Administration",
+  "@title": {
+    "description": "The name of the application"
+  },
+  "dataservices": "Dataservices",
+  "vocabularies": "Vocabularies",
+  "workflow": "Workflow"
+}
