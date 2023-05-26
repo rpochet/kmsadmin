@@ -32,7 +32,7 @@ stages:
       allow_failure: true
 
 code_quality:
-  extends: .base-rules-sandbox
+  extends: .base-rules
   stage: code_quality
   image: "ghcr.io/cirruslabs/flutter:3.10.2"
   before_script:
