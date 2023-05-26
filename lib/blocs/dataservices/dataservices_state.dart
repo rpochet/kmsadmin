@@ -28,3 +28,25 @@ class DataservicesError extends DataservicesState {
   @override
   List<Object?> get props => [message];
 }
+
+class DataserviceLoading extends DataservicesState {
+  final DataserviceModel dataserviceModel;
+  const DataserviceLoading(this.dataserviceModel);
+
+  @override
+  List<Object?> get props => [dataserviceModel];
+}
+
+class DataserviceLoaded extends DataservicesState {
+  final DataserviceModel dataserviceModel;
+  const DataserviceLoaded(this.dataserviceModel);
+}
+
+class DataserviceError extends DataservicesState {
+  final DataserviceModel dataserviceModel;
+  final String error;
+  const DataserviceError(this.dataserviceModel, this.error);
+
+  @override
+  List<Object?> get props => [dataserviceModel, error];
+}

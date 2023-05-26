@@ -1,0 +1,12 @@
+{
+  "head": { "vars": [ "name" , "query" ]
+  } ,
+  "results": { 
+    "bindings": [
+      {
+        "name": { "type": "literal" , "value": "Def graphs" } ,
+        "query": { "type": "literal" , "value": "SELECT DISTINCT ?g WHERE { GRAPH ?g { } . FILTER STRSTARTS(STR(?g), 'https://data.europarl.europa.eu/graph/def/') }" }
+      }
+    ]
+  }
+}

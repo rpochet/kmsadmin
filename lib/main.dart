@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kmsadmin/page/sparql_page.dart';
+import 'package:kmsadmin/page/vocabularies_page.dart';
 import 'package:logging/logging.dart';
 
 import 'page/dataservices_page.dart';
@@ -18,6 +19,7 @@ class Environment {
   static String get apiToken =>
       dotenv.env['API_TOKEN'] ?? 'API_TOKEN not defined';
   static bool get hasEnv => dotenv.isEveryDefined(requiredEnvVars);
+  static bool get useLocalApi => bool.parse(dotenv.env['LOCAL_API'] ?? "false");
 }
 
 Future<void> main() async {
@@ -164,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Icon(Icons.directions_bike),
             DataservicesPage(),
             Icon(Icons.directions_transit),
-            Icon(Icons.directions_boat),
+            VocabulariesPage(),
             Icon(Icons.directions_bus),
             SparqlPage(),
           ],

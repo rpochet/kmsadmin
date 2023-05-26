@@ -18,7 +18,23 @@ class DataservicesBloc extends Bloc<DataservicesEvent, DataservicesState> {
         emit(DataservicesLoaded(mList));
       } on NetworkError {
         emit(const DataservicesError(
-            "Failed to fetch dataservices. Is your device online?"));
+            'Failed to fetch dataservices. Is your device online?'));
+      }
+    });
+    on<UpdateDataservice>((event, emit) async {
+      try {
+        emit(DataserviceLoading(event.dataservice));
+        final mList = await apiRepository.updateDataservice(event.dataservice);
+        DataserviceModel dataservice = mList.item1;
+        String? error = mList.item2;
+        if (error != null) {
+          emit(DataserviceError(dataservice, error));
+        } else {
+          emit(DataserviceLoaded(dataservice));
+        }
+      } on NetworkError {
+        emit(DataserviceError(event.dataservice,
+            'Failed to update dataservice. Is your device online?'));
       }
     });
   }

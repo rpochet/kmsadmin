@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kmsadmin/models/vocabularies_model.dart';
 
-import '../blocs/dataservices/dataservices_bloc.dart';
-import '../models/dataservices_model.dart';
+import '../blocs/vocabularies/vocabularies_bloc.dart';
 import '../resources/api_repository.dart';
 
-class DataservicesPage extends StatefulWidget {
-  const DataservicesPage({super.key});
+class VocabulariesPage extends StatefulWidget {
+  const VocabulariesPage({super.key});
 
   @override
-  _DataservicesPageState createState() => _DataservicesPageState();
+  _VocabulariesPageState createState() => _VocabulariesPageState();
 }
 
-class _DataservicesPageState extends State<DataservicesPage> {
+class _VocabulariesPageState extends State<VocabulariesPage> {
   @override
   void initState() {
     super.initState();
@@ -23,21 +23,21 @@ class _DataservicesPageState extends State<DataservicesPage> {
   Widget build(BuildContext context) {
     var t = AppLocalizations.of(context);
     return Scaffold(
-      appBar: AppBar(title: Text(t!.dataservices)),
-      body: _buildListDataservice(),
+      appBar: AppBar(title: Text(t!.vocabularies)),
+      body: _buildListVocabularies(),
     );
   }
 
-  Widget _buildListDataservice() {
+  Widget _buildListVocabularies() {
     return Container(
       margin: const EdgeInsets.all(8.0),
       child: BlocProvider(
-        create: (context) => DataservicesBloc(
+        create: (context) => VocabulariesBloc(
             apiRepository: RepositoryProvider.of<ApiRepository>(context))
-          ..add(GetDataservicesList()),
-        child: BlocListener<DataservicesBloc, DataservicesState>(
+          ..add(GetVocabulariesList()),
+        child: BlocListener<VocabulariesBloc, VocabulariesState>(
           listener: (context, state) {
-            if (state is DataservicesError) {
+            if (state is VocabulariesError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.message),
@@ -45,15 +45,15 @@ class _DataservicesPageState extends State<DataservicesPage> {
               );
             }
           },
-          child: BlocBuilder<DataservicesBloc, DataservicesState>(
+          child: BlocBuilder<VocabulariesBloc, VocabulariesState>(
             builder: (context, state) {
-              if (state is DataservicesInitial) {
+              if (state is VocabulariesInitial) {
                 return _buildLoading();
-              } else if (state is DataservicesLoading) {
+              } else if (state is VocabulariesLoading) {
                 return _buildLoading();
-              } else if (state is DataservicesLoaded) {
-                return _buildDataserviceList(context, state.dataservicesModel);
-              } else if (state is DataservicesError) {
+              } else if (state is VocabulariesLoaded) {
+                return _buildVocabularyList(context, state.vocabulariesModel);
+              } else if (state is VocabulariesError) {
                 return Container();
               } else {
                 return Container();
@@ -65,16 +65,16 @@ class _DataservicesPageState extends State<DataservicesPage> {
     );
   }
 
-  Widget _buildDataserviceList(BuildContext context, DataservicesModel model) {
+  Widget _buildVocabularyList(BuildContext context, VocabulariesModel model) {
     var t = AppLocalizations.of(context);
-    var numItems = model.dataservices.length;
+    var numItems = model.vocabularies.length;
     return SingleChildScrollView(
       child: SizedBox(
         width: double.infinity,
         child: DataTable(
           columns: <DataColumn>[
             DataColumn(
-              label: Text(t!.uri),
+              label: Text(t!.name),
             ),
             DataColumn(
               label: Text(t.actions),
@@ -83,15 +83,15 @@ class _DataservicesPageState extends State<DataservicesPage> {
           rows: List<DataRow>.generate(
             numItems,
             (int index) =>
-                _buildDataservice(context, index, model.dataservices[index]),
+                _buildVocabulary(context, index, model.vocabularies[index]),
           ),
         ),
       ),
     );
   }
 
-  DataRow _buildDataservice(
-      BuildContext context, int index, DataserviceModel model) {
+  DataRow _buildVocabulary(
+      BuildContext context, int index, VocabularyModel model) {
     return DataRow(
       color: MaterialStateProperty.resolveWith<Color?>(
           (Set<MaterialState> states) {
@@ -106,39 +106,39 @@ class _DataservicesPageState extends State<DataservicesPage> {
         return null; // Use default value for other states and odd rows.
       }),
       cells: <DataCell>[
-        DataCell(Text(model.uri)),
+        DataCell(Text(model.name)),
         DataCell(
           BlocProvider(
-            create: (context) => DataservicesBloc(
+            create: (context) => VocabulariesBloc(
                 apiRepository: RepositoryProvider.of<ApiRepository>(context)),
-            child: BlocListener<DataservicesBloc, DataservicesState>(
+            child: BlocListener<VocabulariesBloc, VocabulariesState>(
               listener: (context, state) {
-                if (state is DataserviceError) {
+                if (state is VocabulariesError) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(state.error),
+                      content: Text(state.message),
                     ),
                   );
                 }
               },
-              child: BlocBuilder<DataservicesBloc, DataservicesState>(
+              child: BlocBuilder<VocabulariesBloc, VocabulariesState>(
                 builder: (context, state) {
-                  if (state is DataservicesInitial) {
+                  if (state is VocabulariesInitial) {
                     return Row(
                       children:
                           _buildActions(context, model, false, false, false),
                     );
-                  } else if (state is DataserviceLoading) {
+                  } else if (state is VocabularyLoading) {
                     return Row(
                       children:
                           _buildActions(context, model, true, false, false),
                     );
-                  } else if (state is DataserviceLoaded) {
+                  } else if (state is VocabularyLoaded) {
                     return Row(
                       children:
                           _buildActions(context, model, false, true, false),
                     );
-                  } else if (state is DataserviceError) {
+                  } else if (state is VocabularyError) {
                     return Row(
                       children:
                           _buildActions(context, model, false, true, true),
@@ -161,11 +161,9 @@ class _DataservicesPageState extends State<DataservicesPage> {
       actions.add(IconButton(
         icon: const Icon(Icons.upload),
         onPressed: () {
-          uploadDataservice(context, model);
+          uploadVocabulary(context, model);
         },
       ));
-    } else {
-      actions.add(const CircularProgressIndicator());
     }
     if (loaded && !error) {
       actions.add(
@@ -176,9 +174,9 @@ class _DataservicesPageState extends State<DataservicesPage> {
     return actions;
   }
 
-  void uploadDataservice(context, dataservice) {
-    BlocProvider.of<DataservicesBloc>(context).add(
-      UpdateDataservice(dataservice),
+  void uploadVocabulary(context, vocabulary) {
+    BlocProvider.of<VocabulariesBloc>(context).add(
+      UpdateVocabulary(vocabulary),
     );
   }
 

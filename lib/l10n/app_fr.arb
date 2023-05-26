@@ -4,6 +4,7 @@
     "description": "The name of the application"
   },
   "uri": "URI",
+  "name": "Name",
   "actions": "Actions",
   "apis": "APIs",
   "dataservices": "Dataservices",

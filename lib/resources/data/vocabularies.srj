@@ -1,0 +1,30 @@
+{
+    "head": {
+        "vars": ["name", "type", "path", "namedGraphUri", "format"]
+    },
+    "results": {
+        "bindings": [{
+                "name": {
+                    "type": "literal",
+                    "value": "address-type"
+                },
+                "type": {
+                    "type": "literal",
+                    "value": "bulk"
+                },
+                "path": {
+                    "type": "literal",
+                    "value": "eu-vocabularies/addresstypes-skos-ap-act.rdf"
+                },
+                "namedGraphUri": {
+                    "type": "uri",
+                    "value": "https://data.europarl.europa.eu/graph/def/address-type"
+                },
+                "format": {
+                    "type": "literal",
+                    "value": "rdfxml"
+                }
+            }
+        ]
+    }
+}

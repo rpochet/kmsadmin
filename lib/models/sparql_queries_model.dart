@@ -14,13 +14,13 @@ class SparqlQueriesModel {
 
 class SparqlQueryModel {
   String name;
-  String sparql;
+  String query;
 
-  SparqlQueryModel({required this.name, required this.sparql});
+  SparqlQueryModel({required this.name, required this.query});
 
   factory SparqlQueryModel.fromJson(Map<String, dynamic> json) =>
       SparqlQueryModel(
         name: json['name']['value'],
-        sparql: json['sparql']['value'],
+        query: json['query']['value'],
       );
 }

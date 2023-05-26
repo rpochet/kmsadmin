@@ -1,0 +1,309 @@
+{
+  "head" : {
+    "vars" : [
+      "service",
+      "endpoint"
+    ]
+  },
+  "results" : {
+    "bindings" : [
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/corporate-bodies-show-current"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/corporate-bodies/show-current"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/catalogs"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/catalogs"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/plenary-docs-by-year"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/plenary-documents"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/dcat-datasets-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/datasets/{dataset-id}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/expressions-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/docs/{docId}/{langId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/rooms-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/rooms/{roomId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/meps"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/meps"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/meps-show-incoming"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/meps/show-incoming"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/tels-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/tels/{telId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/questions-by-year"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/parliamentary-questions"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/participations-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/participations/{participationId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/adopted-texts-by-year"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/adopted-texts"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/datasets"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/datasets"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/meps-show-current"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/meps/show-current"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/meps-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/meps/{persId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/dcat-catalogs-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/catalogs/{catalog-id}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/events-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/events/{event-id}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/manifestations-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/docs/{docId}/{langId}/{formatId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/plenary-session-docs-by-session"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/plenary-session-documents"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/meetings-by-year"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/meetings"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/memberships-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/memberships/{membershipId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/time-periods-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/time-periods/{timePeriodId}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/meps-show-outgoing"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/meps/show-outgoing"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/corporate-bodies"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/corporate-bodies"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/1/docs"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/docs"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/docs-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/docs/{doc-id}"
+        }
+      },
+      {
+        "service" : {
+          "type" : "uri",
+          "value" : "https://data.europarl.europa.eu/service/corporate-bodies-by-id"
+        },
+        "endpoint" : {
+          "datatype" : "http://www.w3.org/2001/XMLSchema#anyURI",
+          "type" : "literal",
+          "value" : "https://data.europarl.europa.eu/api/v1/corporate-bodies/{bodyId}"
+        }
+      }
+    ]
+  }
+}

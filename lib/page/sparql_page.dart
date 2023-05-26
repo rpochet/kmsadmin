@@ -13,11 +13,8 @@ class SparqlPage extends StatefulWidget {
 }
 
 class _SparqlPageState extends State<SparqlPage> {
-  //final SparqlBloc _newsBloc = SparqlBloc();
-
   @override
   void initState() {
-    //_newsBloc.add(GetSparqlQueriesList());
     super.initState();
   }
 

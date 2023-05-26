@@ -1,6 +1,7 @@
 {
   "nl": [
     "uri",
+    "name",
     "actions",
     "apis",
     "bulkLoad",

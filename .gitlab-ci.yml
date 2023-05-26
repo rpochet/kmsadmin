@@ -1,0 +1,81 @@
+variables:
+  RULES_CHANGES_PATH: "**/*"
+  GIT_SUBMODULE_STRATEGY: "recursive"
+  RELEASE_BRANCH_PATTERN: "/^release.*/"
+
+default:
+  tags:
+    - km
+    - sandbox
+  cache:
+    key: $CI_PROJECT_PATH
+    paths:
+      - $MAVEN_LOCAL_REPO
+
+stages:
+  - code_quality
+  - build
+  - deploy
+
+.base-rules:
+  rules:
+    - if: "$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH"
+      changes:
+        - $RULES_CHANGES_PATH
+    - if: "$CI_PIPELINE_SOURCE == 'push'"
+      when: never
+    - if: "$CI_COMMIT_TAG"
+      changes:
+        - $RULES_CHANGES_PATH
+    - if: "$DEPLOY_APP == 'all' || $DEPLOY_APP == '$APP_NAME'"
+    - when: manual
+      allow_failure: true
+
+code_quality:
+  extends: .base-rules-sandbox
+  stage: code_quality
+  image: "ghcr.io/cirruslabs/flutter:3.10.2"
+  before_script:
+    - pub global activate dart_code_metrics
+    - export PATH="$PATH:$HOME/.pub-cache/bin"
+  script:
+    - metrics lib -r codeclimate > code-quality-report.json
+  artifacts:
+    reports:
+      codequality: code-quality-report.json
+
+build_flutter_web:
+  extends: .base-rules
+  stage: build
+  image: "ghcr.io/cirruslabs/flutter:3.10.2"
+  before_script:
+    - flutter pub get
+    - flutter clean
+    - cd $CI_PROJECT_DIR/android
+    - bundle install    
+  script:
+    - cd $CI_PROJECT_DIR/android
+    - fastlane incrementVersionCode
+    - cd $CI_PROJECT_DIR
+    - flutter build appbundle
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/build/app/outputs/bundle/release/
+
+build_flutter_android:
+  extends: .base-rules
+  stage: build
+  image: "ghcr.io/cirruslabs/flutter:3.10.2"
+  before_script:
+    - flutter pub get
+    - flutter clean
+    - cd $CI_PROJECT_DIR/android
+    - bundle install    
+  script:
+    - cd $CI_PROJECT_DIR/android
+    - fastlane incrementVersionCode
+    - cd $CI_PROJECT_DIR
+    - flutter build appbundle
+  artifacts:
+    paths:
+      - $CI_PROJECT_DIR/build/app/outputs/bundle/release/

@@ -15,6 +15,12 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+# Deploy
+
+flutter build web --base-href "/kmsadmin/"
+cd build/web
+aws s3 sync . s3://aws-irl-bucket-kms-dev-0a2f0ffbebc9/admin/kmsadmin/
+
 # Emulator
 
 flutter pub cache clean
