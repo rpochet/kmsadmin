@@ -70,7 +70,7 @@ build_flutter_android:
     - flutter pub get
     - flutter clean
     - cd $CI_PROJECT_DIR/android
-    - bundle install    
+    - bundle install
   script:
     - cd $CI_PROJECT_DIR/android
     - fastlane incrementVersionCode
